@@ -22,7 +22,9 @@ passport.use(new LocalStrategy(async (userName,passWord,done) => {
   
       // Now if user is not null and present in database then we will match password with the password of user present in database 
   
-      const isPasswordMatch = user.password === passWord ? true : false;
+    
+      const isPasswordMatch = await user.comparePassword(passWord);
+
   
       if(isPasswordMatch){
   
